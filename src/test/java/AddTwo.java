@@ -3,44 +3,39 @@ import linkedlist.ListNode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AddTwo {
-
-
     @Test
     public void addTwoSimple(){
         ListNode one = new ListNode(5);
         ListNode two = new ListNode(5);
 
+        ListNode expected = LinkedListUtils.createList(0,1);
         ListNode result = addTwoNumbers(one, two);
 
-        System.out.println("result: ");
-        LinkedListUtils.printAll(result);
+        assertTrue(LinkedListUtils.equalLinkLists(expected, result));
     }
 
     @Test
     public void addUneven(){
-        ListNode one = new ListNode(1);
-        one.next = new ListNode(8);
-        ListNode two = new ListNode(0);
+        ListNode one = LinkedListUtils.createList(9,9);
+        ListNode two = LinkedListUtils.createList(1);
 
         ListNode result = addTwoNumbers(one, two);
-
-        System.out.println("result: ");
-        LinkedListUtils.printAll(result);
+        ListNode expected = LinkedListUtils.createList(0,0,1);
+        assertTrue(LinkedListUtils.equalLinkLists(result, expected));
     }
 
     @Test
     public void addTwoDoubleDigit(){
-        ListNode one = new ListNode(5);
-        one.next = new ListNode(6);
-        ListNode two = new ListNode(5);
-        two.next = new ListNode(6);
+        ListNode one = LinkedListUtils.createList(9,9);
+        ListNode two = LinkedListUtils.createList(9,9);
 
+        ListNode expected = LinkedListUtils.createList(8,9,8);
         ListNode result = addTwoNumbers(one, two);
 
-        System.out.println("result: ");
-        LinkedListUtils.printAll(result);
+        assertTrue(LinkedListUtils.equalLinkLists(expected, result));
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2){
@@ -68,6 +63,31 @@ public class AddTwo {
             l2 = l2.next;
         }
 
+        while(l1.next == null && l2.next != null){
+            int value = l2.val;
+            if(carry){
+                value++;
+            }
+
+            if(l2.val == 9){
+                carry = true;
+            } else {
+                carry = false;
+            }
+            value = value%10;
+
+            p.next = new ListNode(value);
+            p = p.next;
+
+            System.out.println(value);
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+
+        while(l1.next != null && l2.next == null){
+
+        }
+
         if(l1.next==null && l2.next==null){
             int value = (l1.val+l2.val)%10;
             System.out.println(value);
@@ -84,6 +104,8 @@ public class AddTwo {
             }
 
         }
+
+
         return head.next;
     }
 

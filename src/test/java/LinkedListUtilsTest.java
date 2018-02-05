@@ -44,4 +44,17 @@ public class LinkedListUtilsTest {
         assertFalse(LinkedListUtils.equalLinkLists(one, two));
     }
 
+    @Test
+    public void createListTest(){
+        ListNode result = LinkedListUtils.createList(1,2,3,4,5);
+        ListNode expected = new ListNode(1);
+
+        expected.next = new ListNode(2);
+        expected.next.next = new ListNode(3);
+        expected.next.next.next = new ListNode(4);
+        expected.next.next.next.next = new ListNode(5);
+
+        assertTrue(LinkedListUtils.equalLinkLists(expected, result));
+    }
+
 }

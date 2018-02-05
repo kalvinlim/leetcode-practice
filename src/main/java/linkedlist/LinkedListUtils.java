@@ -41,4 +41,22 @@ public class LinkedListUtils {
             System.out.println(node.val);
         }
     }
+
+    public static ListNode createList(int ... values){
+        ListNode result = new ListNode(0);
+        ListNode p = result;
+        if(values.length == 1){
+            return new ListNode(values[0]);
+        }
+        else {
+            p.next = new ListNode(values[0]);
+            p = p.next;
+
+            for(int i=1;i<values.length;i++){
+                p.next = new ListNode(values[i]);
+                p = p.next;
+            }
+            return result.next;
+        }
+    }
 }
