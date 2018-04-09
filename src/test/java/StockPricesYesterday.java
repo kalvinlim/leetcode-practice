@@ -1,36 +1,28 @@
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 public class StockPricesYesterday {
     @Test
-    public void foo(){
-        List prices = Arrays.asList(10, 7, 5, 8, 11, 9);
+    public void getMaxProfitTest(){
+        int[] prices = new int[]{100,10, 7, 5, 8, 11, 9};
 
         assertEquals(6,getMaxProfit(prices));
     }
 
-    public int getMaxProfit(List<Integer> prices){
-        int lowest = prices.get(0);
-        int highest = prices.get(0);
-        int max = highest - lowest;
+    public int getMaxProfit(int[] prices){
+        int lowest = prices[0];
+        int maxDifference = prices[0] - lowest;
 
-        for(Integer price : prices){
-            if(price < lowest){
-                lowest = price;
+        for(int i=1;i<prices.length;i++){
+            if(prices[i] - lowest > maxDifference){
+                maxDifference = prices[i] - lowest;
             }
-            if(price > highest){
-                highest = price;
-            }
-
-            if(highest - lowest > max){
-                max = highest - lowest;
+            if(prices[i] < lowest){
+                lowest = prices[i];
             }
         }
 
-        return max;
+        return maxDifference;
     }
 }

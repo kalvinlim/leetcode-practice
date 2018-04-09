@@ -45,6 +45,9 @@ public class LinkedListUtils {
     public static ListNode createList(int ... values){
         ListNode result = new ListNode(0);
         ListNode p = result;
+        if(values.length == 0){
+            return null;
+        }
         if(values.length == 1){
             return new ListNode(values[0]);
         }
