@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.junit.Assert.assertTrue;
 
-public class BinaryTrees {
+public class BinaryTreesTest {
     Node root;
     @Before
     public void setup() {
