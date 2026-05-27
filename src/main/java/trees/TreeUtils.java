@@ -51,16 +51,16 @@ public class TreeUtils {
     public static void traverseTreeDFS_preOrder(Node root) {
         if (root != null) {
             System.out.println("ROOT VAL: " + root.data);
-            traverseTreeDFS_inOrder(root.left);
-            traverseTreeDFS_inOrder(root.right);
+            traverseTreeDFS_preOrder(root.left);
+            traverseTreeDFS_preOrder(root.right);
         }
     }
 
     //left right root
     public static void traverseTreeDFS_postOrder(Node root) {
         if (root != null) {
-            traverseTreeDFS_inOrder(root.left);
-            traverseTreeDFS_inOrder(root.right);
+            traverseTreeDFS_postOrder(root.left);
+            traverseTreeDFS_postOrder(root.right);
             System.out.println("ROOT VAL: " + root.data);
         }
     }
