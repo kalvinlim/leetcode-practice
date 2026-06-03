@@ -20,15 +20,17 @@ public class BackTrackingTemplate {
 
         // Recursive case
         for (int i = 0; i < nums.length; i++) {
+            System.out.println("==================================");
+            System.out.println("CHOOSE");
+            System.out.println("CURRENT I= " + i);
             // Skip if the number has already been used in this path
+            System.out.println("SHOULD SKIP: " + used[i]);
             if (used[i]) continue;
 
             // Choose
             used[i] = true;
             currentList.add(nums[i]);
-            System.out.println("==================================");
-            System.out.println("CHOOSE");
-            System.out.println("CURRENT I= " + i );
+            System.out.println("Adding to currentList: " + nums[i]);
             System.out.println("Used: " + java.util.Arrays.toString(used));
 
             // Explore
@@ -36,9 +38,8 @@ public class BackTrackingTemplate {
 
             // Un-choose (Backtrack)
             used[i] = false;
+            System.out.println("UNCHOOSE- Current remove: " + Arrays.toString(used) + ", removing: " + currentList.get(currentList.size() -1));
             currentList.remove(currentList.size() - 1);
-
-            System.out.println("UNCHOOSE- Current remove: " + Arrays.toString(used));
         }
     }
 }
