@@ -11,35 +11,22 @@ public class BackTrackingTemplate {
         return result;
     }
 
+    //1. Base Case
+    //2. Choices
+    //3. Constraints
+    //4. Backtracking step
     private static void backtrack(List<List<Integer>> result, List<Integer> currentList, int[] nums, boolean[] used) {
-        // Base case: if our current permutation is the same size as the input, we found a valid permutation
-        if (currentList.size() == nums.length) {
-            result.add(new ArrayList<>(currentList));
-            return;
-        }
+        for(int i=0; i<currentList.size(); i++) {
+            if(used[i]) {
+                continue;
+            }
 
-        // Recursive case
-        for (int i = 0; i < nums.length; i++) {
-            System.out.println("==================================");
-            System.out.println("CHOOSE");
-            System.out.println("CURRENT I= " + i);
-            // Skip if the number has already been used in this path
-            System.out.println("SHOULD SKIP: " + used[i]);
-            if (used[i]) continue;
 
-            // Choose
-            used[i] = true;
             currentList.add(nums[i]);
-            System.out.println("Adding to currentList: " + nums[i]);
-            System.out.println("Used: " + java.util.Arrays.toString(used));
-
-            // Explore
-            backtrack(result, currentList, nums, used);
-
-            // Un-choose (Backtrack)
-            used[i] = false;
-            System.out.println("UNCHOOSE- Current remove: " + Arrays.toString(used) + ", removing: " + currentList.get(currentList.size() -1));
-            currentList.remove(currentList.size() - 1);
         }
+    }
+
+    public static void findSubsets(int[] nums, int index, List<Integer> current, List<List<Integer>> result) {
+
     }
 }
