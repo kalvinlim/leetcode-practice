@@ -1,7 +1,6 @@
 package backtracking;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BackTrackingTemplate {
@@ -16,13 +15,32 @@ public class BackTrackingTemplate {
     //3. Constraints
     //4. Backtracking step
     private static void backtrack(List<List<Integer>> result, List<Integer> currentList, int[] nums, boolean[] used) {
-        for(int i=0; i<currentList.size(); i++) {
+        if(currentList.size() == nums.length) {
+            result.add(new ArrayList<>(currentList));
+        }
+        for(int i=0; i<nums.length; i++) {
             if(used[i]) {
                 continue;
             }
 
-
+            used[i] = true;
             currentList.add(nums[i]);
+            backtrack(result, currentList, nums, used);
+
+            used[i] = false;
+            currentList.removeLast();
+        }
+    }
+
+
+    public static void backtrackPermuations(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start) {
+        result.add(new ArrayList<>(tempList));
+
+        for(int i=start; i<nums.length; i++) {
+            tempList.add(nums[i]);
+            backtrackPermuations(result, tempList, nums, i+1);
+            tempList.removeLast();
+
         }
     }
 

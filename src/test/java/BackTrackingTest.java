@@ -1,5 +1,6 @@
 import backtracking.BackTrackingTemplate;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -35,6 +36,33 @@ public class BackTrackingTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void findAllSubsets_standard_Test() {
+        // 1. Define the input array
+        int[] inputNumbers = {1, 2, 3};
+        // 2. Initialize the list to store all subsets
+        List<List<Integer>> allSubsets = new ArrayList<>();
+
+        // 3. Call the subset algorithm starting at index 0
+        BackTrackingTemplate.backtrackPermuations(allSubsets, new ArrayList<>(), inputNumbers, 0);
+
+        // 4. Assert the final results (expected order produced by the algorithm)
+        List<List<Integer>> expectedSubsets = new ArrayList<>(List.of(
+                new ArrayList<>(),
+                new ArrayList<>(List.of(1)),
+                new ArrayList<>(List.of(1, 2)),
+                new ArrayList<>(List.of(1, 2, 3)),
+                new ArrayList<>(List.of(1, 3)),
+                new ArrayList<>(List.of(2)),
+                new ArrayList<>(List.of(2, 3)),
+                new ArrayList<>(List.of(3))
+        ));
+
+        assertEquals(expectedSubsets, allSubsets);
+    }
+
+
+    @Ignore
     @Test
     public void findAllSubsets_Test() {
         // 1. Define the input array
