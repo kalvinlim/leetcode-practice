@@ -1,4 +1,5 @@
 import backtracking.BackTrackingTemplate;
+import backtracking.LetterCombinationOfPhoneNumber;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -115,5 +116,13 @@ public class BackTrackingTest {
             Arrays.asList(3,2,1)
         );
         assertEquals(expected, result);
+    }
+
+
+    @Test
+    public void letterCombinationsOfAPhoneNumber() {
+        List<String> combinations = LetterCombinationOfPhoneNumber.letterCombinations("23");
+        List<String> expected = new ArrayList<>(Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"));
+        assertEquals(expected, combinations);
     }
 }

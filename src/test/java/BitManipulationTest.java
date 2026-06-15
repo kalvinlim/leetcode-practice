@@ -12,7 +12,8 @@ public class BitManipulationTest {
 
     @Test
     public void bits() {
-
+        Integer count = Integer.bitCount(3);
+        System.out.println("Bitcount: " + count);
     }
 
 }

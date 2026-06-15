@@ -9,44 +9,36 @@ public class BackTrackingTemplate {
     //Permutations II
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        // Sort the array to group duplicates together
-        Arrays.sort(nums);
-        // Track which elements are used in the current path
         boolean[] used = new boolean[nums.length];
         backtrackII(nums, used, new ArrayList<>(), result);
         return result;
     }
 
-    private void backtrackII(int[] nums, boolean[] used, List<Integer> current, List<List<Integer>> result) {
-        // Base case: a complete permutation is found
-        if (current.size() == nums.length) {
-            result.add(new ArrayList<>(current));
+    //Base case
+    //Choose
+    //Explore
+    //Backtrack
+    private void backtrackII(int[] nums, boolean[] used, List<Integer> currentPath, List<List<Integer>> result) {
+        if (currentPath.size() == nums.length) {
+            result.add(new ArrayList<>(currentPath));
             return;
         }
 
         for (int i = 0; i < nums.length; i++) {
-            // Skip if the element is already used in the current path
-            if (used[i]) {
-                continue;
-            }
+            if (used[i]) continue;
 
-            // Skip duplicates: if the current element is identical to the previous one,
-            // and the previous one was not used in this branch, it means we already
-            // fully explored that exact value configuration.
+            // Extra Step 2: Skip identical elements under specific conditions
             if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
                 continue;
             }
 
-            // Choose
             used[i] = true;
-            current.add(nums[i]);
+            currentPath.add(nums[i]);
 
-            // Explore
-            backtrackII(nums, used, current, result);
+            backtrackII(nums, used, currentPath, result);
 
-            // Un-choose (Backtrack)
+            currentPath.remove(currentPath.size() - 1);
             used[i] = false;
-            current.remove(current.size() - 1);
         }
     }
 
@@ -86,7 +78,6 @@ public class BackTrackingTemplate {
             tempList.add(nums[i]);
             backtrackPermuations(result, tempList, nums, i+1);
             tempList.removeLast();
-
         }
     }
 

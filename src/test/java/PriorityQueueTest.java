@@ -20,4 +20,16 @@ public class PriorityQueueTest {
         maxHeap.add(2);
         maxHeap.poll();
     }
+
+    @Test
+    public void tryingMinHeap() {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        minHeap.add(3);
+        minHeap.add(10);
+        minHeap.add(1);
+
+        while (!minHeap.isEmpty()) {
+            System.out.println(minHeap.poll()); // prints 1 then 3 then 10
+        }
+     }
 }
