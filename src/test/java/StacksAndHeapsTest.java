@@ -1,0 +1,25 @@
+import org.junit.Before;
+import org.junit.Test;
+import stacksAndHeaps.StackAndHeaps;
+
+import static org.junit.Assert.assertEquals;
+
+public class StacksAndHeapsTest {
+    int[] prices;
+    @Before
+    public void setup() {
+    }
+
+    @Test
+    public void stacksAndHeapsTest() {
+        prices = new int[]{1, 2, 40, 4, 1, 2};
+        assertEquals(44, StackAndHeaps.calculateDiscountedTotal(prices));
+    }
+
+    @Test
+    public void stacksAndHeapsTest2() {
+        prices = new int[]{1, 12, 4, 3, 1, 2, 7, 3, 8};
+        assertEquals(30, StackAndHeaps.calculateDiscountedTotal(prices));
+    }
+
+}
