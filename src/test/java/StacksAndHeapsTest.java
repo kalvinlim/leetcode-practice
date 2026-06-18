@@ -22,4 +22,10 @@ public class StacksAndHeapsTest {
         assertEquals(30, StackAndHeaps.calculateDiscountedTotal(prices));
     }
 
+    @Test
+    public void stacksAndHeapsTest3() {
+        prices = new int[]{2, 3, 45, 5, 1, 2};
+        assertEquals(50, StackAndHeaps.calculateDiscountedTotal(prices));
+    }
+
 }
