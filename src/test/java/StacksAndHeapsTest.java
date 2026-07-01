@@ -13,13 +13,13 @@ public class StacksAndHeapsTest {
     @Test
     public void stacksAndHeapsTest() {
         prices = new int[]{1, 2, 40, 4, 1, 2};
-        assertEquals(44, StackAndHeaps.calculateDiscountedTotal(prices));
+        assertEquals(43, StackAndHeaps.calculateDiscountedTotal(prices));
     }
 
     @Test
     public void stacksAndHeapsTest2() {
         prices = new int[]{1, 12, 4, 3, 1, 2, 7, 3, 8};
-        assertEquals(30, StackAndHeaps.calculateDiscountedTotal(prices));
+        assertEquals(29, StackAndHeaps.calculateDiscountedTotal(prices));
     }
 
     @Test

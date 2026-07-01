@@ -1,27 +1,32 @@
 package stacksAndHeaps;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class StackAndHeaps {
     public static int calculateDiscountedTotal(int[] prices) {
-        int[] discounted = prices.clone(); // start with original prices
-        Deque<Integer> stack = new ArrayDeque<>(); // stores indices
+        Deque<Integer> stack = new ArrayDeque<>();
+        int[] updatedPrices = prices.clone();
 
-        for (int i = 0; i < prices.length; i++) {
-            // Current price is the "first smaller" for everything on the stack above it
-            while (!stack.isEmpty() && prices[stack.peek()] > prices[i]) {
-                System.out.println("COMPARING CURRENT INTERATION: " + prices[i] + " to stack top " + stack.peek() + ". Popping " + stack.peek());
-                int idx = stack.pop();
-                discounted[idx] = prices[idx] - prices[i]; // apply discount
+        for(int i=0;i<prices.length;i++) {
+            while(!stack.isEmpty() && prices[i] <= updatedPrices[stack.peek()]) {
+                int currentIndex = stack.peek();
+                updatedPrices[currentIndex] -= prices[i];
+                stack.pop();
             }
             stack.push(i);
-            System.out.println("Pushing " + i + " onto stack. Current stack state: " + stack);
         }
-        // anything remaining in stack has no discount → keeps original price
 
         int total = 0;
-        for (int p : discounted) total += p;
+
+        for(int price : updatedPrices) {
+            total+=price;
+        }
+
         return total;
     }
+
+
+
 }
