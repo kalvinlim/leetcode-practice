@@ -152,4 +152,25 @@ public class StacksAndHeapsTest {
         assertArrayEquals(new int[]{2, 5, 5, 5, 5, -1}, StackAndHeaps.nextLargerElement(arr));
     }
 
+    @Test
+    public void nextGreaterElement_leetcodeExample() {
+        int[] nums1 = {4,1,2};
+        int[] nums2 = {1,3,4,2};
+        assertArrayEquals(new int[]{-1,3,-1}, new StackAndHeaps().nextGreaterElement(nums1, nums2));
+    }
+
+    @Test
+    public void nextGreaterElement_subset() {
+        int[] nums1 = {2,4};
+        int[] nums2 = {1,2,3,4};
+        assertArrayEquals(new int[]{3, -1}, new StackAndHeaps().nextGreaterElement(nums1, nums2));
+    }
+
+    @Test
+    public void nextGreaterElement_single() {
+        int[] nums1 = {4};
+        int[] nums2 = {1,2,3,4};
+        assertArrayEquals(new int[]{-1}, new StackAndHeaps().nextGreaterElement(nums1, nums2));
+    }
+
 }
