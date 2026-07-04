@@ -50,4 +50,61 @@ public class StringManipulationTest {
         assertEquals("world Hello", StringManipulation.reverseWords("Hello world   "));
     }
 
+    // Tests for reverseWords(char[] s) - in-place reversal
+    @Test
+    public void testReverseWordsCharArrayBasic() {
+        char[] input = "Hello world".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("world Hello", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArraySingleWord() {
+        char[] input = "hello".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("hello", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArrayThreeWords() {
+        char[] input = "the sky is blue".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("blue is sky the", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArrayWithMultipleSpaces() {
+        char[] input = "a  good   example".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("example   good  a", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArrayTwoWords() {
+        char[] input = "LeetCode Practice".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("Practice LeetCode", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArrayWithLeadingSpace() {
+        char[] input = " hello world".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("world hello ", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArrayWithTrailingSpace() {
+        char[] input = "hello world ".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals(" world hello", new String(input));
+    }
+
+    @Test
+    public void testReverseWordsCharArrayFourWords() {
+        char[] input = "Java is awesome lang".toCharArray();
+        StringManipulation.reverseWords(input);
+        assertEquals("lang awesome is Java", new String(input));
+    }
+
 }
