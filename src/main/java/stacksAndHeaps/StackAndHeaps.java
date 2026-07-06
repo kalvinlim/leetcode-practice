@@ -3,6 +3,7 @@ package stacksAndHeaps;
 import java.util.*;
 
 public class StackAndHeaps {
+    //Leetcode 1475 Final prices with a special discount in a shop
     public static int calculateDiscountedTotal(int[] prices) {
         Deque<Integer> stack = new ArrayDeque<>();
         int[] updatedPrices = prices.clone();
